@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Single App ejemplo</title>
+	<link rel="stylesheet" href="css/main.css">
+	<script>
+
+		let secciones = [];
+		let btn_juego, btn_instrucciones, btn_creditos;
+		window.onload = init;
+
+		function init(){
+
+			asignarVariables();
+			asignarEventos();
+			cargaAutomatica();
+
+		}
+
+		function asignarVariables(){
+			secciones.push(document.getElementById('splash'));
+			secciones.push(document.getElementById('home'));
+			secciones.push(document.getElementById('juego'));
+			secciones.push(document.getElementById('creditos'));
+			secciones.push(document.getElementById('instrucciones'));
+
+			btn_juego = document.getElementById("btn_juego");
+			btn_instrucciones = document.getElementById("btn_instrucciones");
+			btn_creditos = document.getElementById("btn_creditos");
+		}
+
+		function asignarEventos(){
+			btn_juego.addEventListener("click",procesarClick);
+			btn_instrucciones.addEventListener("click",procesarClick);
+			btn_creditos.addEventListener("click",procesarClick);
+		}
+
+		function cargaAutomatica(){
+			setTimeout(()=>{
+				irA(1);
+			},3000);
+		}
+
+		function procesarClick(event){
+
+			console.log(event.target.id);
+			switch(event.target.id)
+			{
+				case "btn_juego":irA(2)
+								 break;
+				case "btn_instrucciones":irA(3)
+								 break;
+				case "btn_creditos":irA(4)
+								 break;
+			}
+
+		}
+
+		function irA(indice)
+		{
+			for(var i in secciones)
+			{
+				secciones[i].classList.add("ocultar");
+			}
+			secciones[indice].classList.remove("ocultar");
+		}
+	</script>
+</head>
+<body>
+	<!-- Splash -->
+	<section id="splash">
+		<br>
+		<h1>Splash del juego</h1>
+		<img src="http://icons.iconarchive.com/icons/sonya/swarm/128/ivoted-2014-icon.png" alt="">
+	</section>
+	<!-- Home -->
+	<section id="home" class="ocultar">
+		<br>
+		<h1>Nombre del juego</h1>
+		<img src="http://icons.iconarchive.com/icons/sonya/swarm/128/ivoted-2014-icon.png" alt="">
+		<br>
+		<br>
+		<a href="javascript:void(0);" id="btn_juego">Juego</a><br><br>
+		<a href="javascript:void(0);" id="btn_instrucciones">Instrucciones</a><br><br>
+		<a href="javascript:void(0);" id="btn_creditos">Créditos</a><br>
+	</section>
+	<!-- Juego -->
+	<section id="juego" class="ocultar">
+		<a href="#" class="boton volver">&lt;</a>
+		<br>
+		<h1>Juego</h1>
+		<br>
+		<img src="http://icons.iconarchive.com/icons/sonya/swarm/128/Mona-Lisa-icon.png" alt="">
+		<br>
+		<br>
+		<a href="#">Miguel Angel</a>&nbsp;&nbsp;
+		<a href="#">Fernando Botero</a><br><br>
+		<a href="#">Alberto Durero</a>&nbsp;&nbsp;
+		<a href="#">Leonardo da Vinci</a><br><br>
+	</section>
+	<!-- Créditos / Autores -->
+	<section id="creditos" class="ocultar">
+		<a href="#" class="boton volver">&lt;</a>
+		<br>
+		<br>
+		<h1>Créditos - Estudiantes</h1>
+		<br>
+		<img src="http://icons.iconarchive.com/icons/hopstarter/superhero-avatar/64/Avengers-Black-Widow-icon.png" alt="">&nbsp;&nbsp;
+		<span>Nombre Estudiante / Diseñad@r</span> <br>
+		<img src="http://icons.iconarchive.com/icons/hopstarter/superhero-avatar/64/Avengers-Iron-Man-icon.png" alt="">&nbsp;&nbsp;
+		<span>Nombre Estudiante / Ingeniero</span> <br>
+		<img src="http://icons.iconarchive.com/icons/hopstarter/superhero-avatar/64/Avengers-Thor-icon.png" alt="">&nbsp;&nbsp;
+		<span>Nombre Estudiante / Ingeniero</span>
+	</section>
+	<!-- Instrucciones -->
+	<section id="instrucciones" class="ocultar">
+		<a href="#" class="boton volver">&lt;</a>
+		<h1>Instrucciones</h1>
+		<p>
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti, explicabo ducimus voluptates suscipit consequatur eligendi eos, hic aperiam sit! Recusandae explicabo provident sapiente beatae nam soluta ab minima omnis sed! <br>
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias repellendus aliquam odit, iusto earum ipsum. Repudiandae deleniti corporis, praesentium accusantium aspernatur temporibus quisquam minus, soluta provident molestiae. Tempore, aliquid, fugit. <br>
+
+		</p>
+		<a href="#" class="boton">&lt;</a>&nbsp;&nbsp;<a href="" class="boton">&gt;</a>
+	</section>
+</body>
+</html>
